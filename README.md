@@ -1,3 +1,5 @@
+# lang0909 Fork Version
+
 # React Native Alpha Flat List
 
 A simple and fully customizable React Native component that implements Alphabetical List
@@ -23,44 +25,46 @@ $ npm install --save react-native-alpha-flat-list
 Import the `AlphaFlatList` component from `react-native-alpha-flat-list` and use it like so:
 
 ```jsx
-import React from 'react'
-import { SafeAreaView, View, Text } from 'react-native'
+import React from "react";
+import { SafeAreaView, View, Text } from "react-native";
 
-import AlphaFlatList from 'react-native-alpha-flat-list'
+import AlphaFlatList from "react-native-alpha-flat-list";
 
-const ITEM_HEIGHT = 20
+const ITEM_HEIGHT = 20;
 
 const items = Array.from({ length: 500 }, () => {
-    return {
-        id: '_' + Math.random().toString(36).substr(2, 9),
-        name: Math.random().toString(36).substring(7).replace(/[0-9]/g, '')
-    }
-})
+  return {
+    id: "_" + Math.random().toString(36).substr(2, 9),
+    name: Math.random().toString(36).substring(7).replace(/[0-9]/g, ""),
+  };
+});
 
-const data = items.sort((previous, next) => previous.name.localeCompare(next.name))
+const data = items.sort((previous, next) =>
+  previous.name.localeCompare(next.name)
+);
 
-export default function App () {
-    const renderItem = ({ item }) => (
-        <View style={{ height: ITEM_HEIGHT, paddingLeft: 20, }}>
-            <Text>{item.name}</Text>
-        </View>
-    )
+export default function App() {
+  const renderItem = ({ item }) => (
+    <View style={{ height: ITEM_HEIGHT, paddingLeft: 20 }}>
+      <Text>{item.name}</Text>
+    </View>
+  );
 
-    const keyExtractor = ({ id }) => id
+  const keyExtractor = ({ id }) => id;
 
-    return (
-        <SafeAreaView style={{ flex: 1 }}>
-            <AlphaFlatList
-                data={data}
-                initialNumToRender={data.length}
-                keyExtractor={keyExtractor}
-                renderItem={renderItem}
-                itemHeight={ITEM_HEIGHT}
-                listStyle={{ paddingLeft: 10 }}
-                sidebarLetterStyle={{ fontWeight: 'bold' }}
-                sidebarLetterActiveStyle={{ color: 'red' }}
-            />
-        </SafeAreaView>
-    )
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <AlphaFlatList
+        data={data}
+        initialNumToRender={data.length}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        itemHeight={ITEM_HEIGHT}
+        listStyle={{ paddingLeft: 10 }}
+        sidebarLetterStyle={{ fontWeight: "bold" }}
+        sidebarLetterActiveStyle={{ color: "red" }}
+      />
+    </SafeAreaView>
+  );
 }
 ```

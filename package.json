@@ -1,49 +1,49 @@
 {
-    "name": "@yoovanr/react-native-alpha-flat-list",
-    "version": "0.0.23",
-    "description": "A simple and fully customizable React Native component that implements Alphabetical List",
-    "main": "src/index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/yoovanr/react-native-alpha-flat-list.git"
-    },
-    "keywords": [
-        "react-native",
-        "react-component",
-        "react-native-component",
-        "react",
-        "react native",
-        "mobile",
-        "ios",
-        "android",
-        "alphabetical",
-        "alphabet",
-        "list",
-        "flat-list",
-        "flat list"
-    ],
-    "author": "yoovanr",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/yoovanr/react-native-alpha-flat-list/issues"
-    },
-    "homepage": "https://github.com/yoovanr/react-native-alpha-flat-list",
-    "dependencies": {
-        "lodash.debounce": "^4.0.8",
-        "prop-types": "^15.5.10",
-        "react-native-responsive-fontsize": "0.1.2"
-    },
-    "peerDependencies": {
-        "react": "^16.0.0-alpha.12",
-        "react-native": "^0.44.0"
-    },
-    "devDependencies": {
-        "metro-react-native-babel-preset": "^0.61.0"
-    },
-    "publishConfig": {
-        "registry": "https://npm.pkg.github.com/yoovanr"
-    }
+  "name": "@lang0909/react-native-alpha-flat-list",
+  "version": "0.0.1",
+  "description": "A simple and fully customizable React Native component that implements Alphabetical List",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lang0909/react-native-alpha-flat-list.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "react-native-component",
+    "react",
+    "react native",
+    "mobile",
+    "ios",
+    "android",
+    "alphabetical",
+    "alphabet",
+    "list",
+    "flat-list",
+    "flat list"
+  ],
+  "author": "lang0909",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lang0909/react-native-alpha-flat-list/issues"
+  },
+  "homepage": "https://github.com/lang0909/react-native-alpha-flat-list",
+  "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "prop-types": "^15.5.10",
+    "react-native-responsive-fontsize": "0.1.2"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0-alpha.12",
+    "react-native": "^0.44.0"
+  },
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.61.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/yoovanr"
+  }
 }

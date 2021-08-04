@@ -44,6 +44,6 @@
     "metro-react-native-babel-preset": "^0.61.0"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/lang0909"
+    "registry": "https://npm.pkg.github.com/"
   }
 }

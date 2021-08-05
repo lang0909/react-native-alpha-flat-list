@@ -86,7 +86,49 @@ export default function getData(array) {
   });
   const validLetter =
     "abcdefghijklmnopqrstuvwxyzㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎ".split("");
-  const dataSet = {};
+  const dataSet = {
+    ㄱ: [],
+    ㄴ: [],
+    ㄷ: [],
+    ㄹ: [],
+    ㅁ: [],
+    ㅂ: [],
+    ㅅ: [],
+    ㅇ: [],
+    ㅈ: [],
+    ㅊ: [],
+    ㅋ: [],
+    ㅌ: [],
+    ㅍ: [],
+    ㅎ: [],
+    A: [],
+    B: [],
+    C: [],
+    D: [],
+    E: [],
+    F: [],
+    G: [],
+    H: [],
+    I: [],
+    J: [],
+    K: [],
+    L: [],
+    M: [],
+    N: [],
+    O: [],
+    P: [],
+    Q: [],
+    R: [],
+    S: [],
+    T: [],
+    U: [],
+    V: [],
+    W: [],
+    X: [],
+    Y: [],
+    Z: [],
+    "#": [],
+  };
   sortedArray.forEach((item) => {
     const letter = getFirstLetter(item.name, validLetter);
     if (!letter) return;

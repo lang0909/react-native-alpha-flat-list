@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FlatList, View } from "react-native";
 
 import PropTypes from "prop-types";
 import debounce from "lodash.debounce";
 
 import Sidebar from "./components/Sidebar";
+import getData from "./utils/getData";
 
 const viewabilityConfig = {
   viewAreaCoveragePercentThreshold: 50,
@@ -12,6 +13,13 @@ const viewabilityConfig = {
 
 export default function AlphaFlatList(props) {
   const [activeLetter, setActiveLetter] = useState(undefined);
+  //추가
+  const [currentData, setCurrentData] = useState([]);
+
+  useEffect(() => {
+    setCurrentData(getData(props.dataList));
+  }, [props.dataList]);
+  //추가
 
   const flatListRef = useRef();
   const onViewableItemsChangedRef = useRef(onViewableItemsChanged);
@@ -20,7 +28,9 @@ export default function AlphaFlatList(props) {
   function onScroll(activeLetter) {
     if (activeLetter) {
       let index = -1;
-      index = props.data.findIndex((item, i) => {
+      //추가
+      index = currentData.findIndex((item, i) => {
+        // index = props.data.findIndex((item, i) => {
         let firstVal = item[props.scrollKey].toUpperCase().charAt(0);
         firstVal = "#";
         let firstChar = item[props.scrollKey].toUpperCase().charCodeAt(0);
@@ -119,7 +129,9 @@ export default function AlphaFlatList(props) {
   if (props.displayOnlyAvailableLetters) {
     letters = [
       ...new Set(
-        props.data.map((item) => {
+        //추가
+        currentData.map((item) => {
+          // props.data.map((item) => {
           let firstVal = item[props.scrollKey].toUpperCase().charAt(0);
           firstVal = "#";
           let firstChar = item[props.scrollKey].toUpperCase().charCodeAt(0);
@@ -286,6 +298,8 @@ export default function AlphaFlatList(props) {
     <View style={[props.containerStyle]}>
       <FlatList
         {...props}
+        //추가
+        data={currentData}
         ref={flatListRef}
         style={[props.listStyle]}
         onViewableItemsChanged={onViewableItemsChangedRef.current}
@@ -311,7 +325,9 @@ export default function AlphaFlatList(props) {
 }
 
 AlphaFlatList.propTypes = {
-  data: PropTypes.array,
+  //추가
+  dataList: PropTypes.array,
+  // data: PropTypes.array,
   scrollKey: PropTypes.string,
   itemHeight: PropTypes.number,
   hideSidebar: PropTypes.bool,

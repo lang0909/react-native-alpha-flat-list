@@ -97,7 +97,7 @@ export default function getData(array) {
     dataSet[letter].push(item);
   });
   const keyArray = Object.keys(dataSet);
-  const result = [];
+  let result = [];
   for (let i = 0; i < keyArray.length; i++) {
     result = [...result, ...dataSet[keyArray[i]]];
   }

@@ -29,6 +29,21 @@ export default function AlphaFlatList(props) {
           (firstChar >= 12593 && firstChar <= 12622)
         ) {
           firstVal = item[props.scrollKey].toUpperCase().charAt(0);
+          if (firstChar === 12594) {
+            firstVal = "ㄱ";
+          }
+          if (firstChar === 12600) {
+            firstVal = "ㄷ";
+          }
+          if (firstChar === 12611) {
+            firstVal = "ㅂ";
+          }
+          if (firstChar === 12614) {
+            firstVal = "ㅅ";
+          }
+          if (firstChar === 12617) {
+            firstVal = "ㅈ";
+          }
         } else {
           if (firstChar >= 44032 && firstChar <= 55203) {
             switch (true) {
@@ -75,22 +90,6 @@ export default function AlphaFlatList(props) {
                 firstVal = "ㅎ";
                 break;
             }
-          } else {
-            if (firstChar === 12594) {
-              firstVal = "ㄱ";
-            }
-            if (firstChar === 12600) {
-              firstVal = "ㄷ";
-            }
-            if (firstChar === 12611) {
-              firstVal = "ㅂ";
-            }
-            if (firstChar === 12614) {
-              firstVal = "ㅅ";
-            }
-            if (firstChar === 12617) {
-              firstVal = "ㅈ";
-            }
           }
         }
         if (firstVal === activeLetter) {
@@ -128,6 +127,22 @@ export default function AlphaFlatList(props) {
             (firstChar >= 12593 && firstChar <= 12622)
           ) {
             firstVal = item[props.scrollKey].toUpperCase().charAt(0);
+
+            if (firstChar === 12594) {
+              firstVal = "ㄱ";
+            }
+            if (firstChar === 12600) {
+              firstVal = "ㄷ";
+            }
+            if (firstChar === 12611) {
+              firstVal = "ㅂ";
+            }
+            if (firstChar === 12614) {
+              firstVal = "ㅅ";
+            }
+            if (firstChar === 12617) {
+              firstVal = "ㅈ";
+            }
           } else {
             if (firstChar >= 44032 && firstChar <= 55203) {
               switch (true) {
@@ -174,22 +189,6 @@ export default function AlphaFlatList(props) {
                   firstVal = "ㅎ";
                   break;
               }
-            } else {
-              if (firstChar === 12594) {
-                firstVal = "ㄱ";
-              }
-              if (firstChar === 12600) {
-                firstVal = "ㄷ";
-              }
-              if (firstChar === 12611) {
-                firstVal = "ㅂ";
-              }
-              if (firstChar === 12614) {
-                firstVal = "ㅅ";
-              }
-              if (firstChar === 12617) {
-                firstVal = "ㅈ";
-              }
             }
           }
           return firstVal;
@@ -214,6 +213,22 @@ export default function AlphaFlatList(props) {
         firstVal = viewableItems[0].item[props.scrollKey]
           .toUpperCase()
           .charAt(0);
+
+        if (firstChar === 12594) {
+          firstVal = "ㄱ";
+        }
+        if (firstChar === 12600) {
+          firstVal = "ㄷ";
+        }
+        if (firstChar === 12611) {
+          firstVal = "ㅂ";
+        }
+        if (firstChar === 12614) {
+          firstVal = "ㅅ";
+        }
+        if (firstChar === 12617) {
+          firstVal = "ㅈ";
+        }
       } else {
         if (firstChar >= 44032 && firstChar <= 55203) {
           switch (true) {
@@ -259,22 +274,6 @@ export default function AlphaFlatList(props) {
             case firstChar < 55204:
               firstVal = "ㅎ";
               break;
-          }
-        } else {
-          if (firstChar === 12594) {
-            firstVal = "ㄱ";
-          }
-          if (firstChar === 12600) {
-            firstVal = "ㄷ";
-          }
-          if (firstChar === 12611) {
-            firstVal = "ㅂ";
-          }
-          if (firstChar === 12614) {
-            firstVal = "ㅅ";
-          }
-          if (firstChar === 12617) {
-            firstVal = "ㅈ";
           }
         }
       }

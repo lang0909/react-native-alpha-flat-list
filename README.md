@@ -4,21 +4,15 @@
 
 A simple and fully customizable React Native component that implements Alphabetical List
 
+version for lang0909
+
 ## Getting Started
 
 ```
-$ yarn add react-native-alpha-flat-list
-```
-
-or
-
-```
-$ npm install --save react-native-alpha-flat-list
+$ npm install --save @lang0909/react-native-alpha-flat-list
 ```
 
 ## Example
-
-![](https://i.ibb.co/jZgY6Mp/ezgif-1-85aad49db83d.gif)
 
 ## Usage
 

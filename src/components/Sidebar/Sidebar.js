@@ -20,6 +20,7 @@ function Sidebar(props) {
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: debounce(onPanResponderGrant),
       onPanResponderMove: debounce(onPanResponderMove),
+      onPanResponderEnd: debounce(onPanResponderEnd),
     })
   ).current;
 
@@ -55,8 +56,13 @@ function Sidebar(props) {
     onTouchLetter(letter);
   }
 
+  function onPanResponderEnd(event, gestureState) {
+    props.endFunc();
+  }
+
   function onTouchLetter(letter) {
     props.onScroll(letter);
+    props.beginFunc();
   }
 
   function onLayout() {
@@ -102,6 +108,8 @@ function Sidebar(props) {
 }
 
 Sidebar.propTypes = {
+  beginFunc: PropTypes.func,
+  endFunc: PropTypes.func,
   onScroll: PropTypes.func,
   sidebarContainerStyle: PropTypes.object,
   sidebarLetterContainerStyle: PropTypes.object,

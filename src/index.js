@@ -10,12 +10,37 @@ const viewabilityConfig = {
   viewAreaCoveragePercentThreshold: 50,
 };
 
+let touchVal = false;
 export default function AlphaFlatList(props) {
   const [activeLetter, setActiveLetter] = useState(undefined);
 
   const flatListRef = useRef();
   const onViewableItemsChangedRef = useRef(onViewableItemsChanged);
   const viewabilityConfigRef = useRef(viewabilityConfig);
+  const [isHide, setHide] = useState(false);
+  let timer;
+
+  function ySideBar() {
+    touchVal = true;
+    setHide(true);
+    if (timer) {
+      clearTimeout(timer);
+    }
+  }
+
+  function nSideBar() {
+    if (touchVal) {
+      return;
+    }
+    setHide(false);
+  }
+
+  const debounceNSide = function () {
+    touchVal = false;
+    timer = setTimeout(() => {
+      nSideBar();
+    }, 3000);
+  };
 
   function onScroll(activeLetter) {
     if (activeLetter) {
@@ -287,15 +312,19 @@ export default function AlphaFlatList(props) {
         {...props}
         ref={flatListRef}
         style={[props.listStyle]}
+        onScrollBeginDrag={debounce(ySideBar)}
+        onMomentumScrollEnd={debounce(debounceNSide)}
         onViewableItemsChanged={onViewableItemsChangedRef.current}
         viewabilityConfig={viewabilityConfigRef.current}
       />
 
-      {!props.hideSidebar && (
+      {isHide && (
         <Sidebar
           activeLetter={activeLetter}
           letters={letters}
           onScroll={debounce(onScroll)}
+          beginFunc={debounce(ySideBar)}
+          endFunc={debounce(debounceNSide)}
           sidebarContainerStyle={props.sidebarContainerStyle}
           sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
           sidebarLetterContainerActiveStyle={

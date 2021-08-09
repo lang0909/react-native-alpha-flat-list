@@ -131,7 +131,7 @@ export default function AlphaFlatList(props) {
           itemIndex: index + 1,
         };
 
-        sectionListRef.current.scrollToOffset(options);
+        sectionListRef.current.scrollToLocation(options);
       }
     }
   }

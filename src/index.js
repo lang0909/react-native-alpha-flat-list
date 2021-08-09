@@ -345,8 +345,7 @@ export default function AlphaFlatList(props) {
 }
 
 AlphaFlatList.propTypes = {
-  data: PropTypes.array,
-  sections: PropTypes.object,
+  sections: PropTypes.array,
   scrollKey: PropTypes.string,
   itemHeight: PropTypes.number,
   displayOnlyAvailableLetters: PropTypes.bool,

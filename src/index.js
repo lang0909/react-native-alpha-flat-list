@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { FlatList, View } from "react-native";
+import { SectionList, View, Text } from "react-native";
 
 import PropTypes from "prop-types";
 import debounce from "lodash.debounce";
@@ -14,7 +14,7 @@ let touchVal = false;
 export default function AlphaFlatList(props) {
   const [activeLetter, setActiveLetter] = useState(undefined);
 
-  const flatListRef = useRef();
+  const sectionListRef = useRef();
   const onViewableItemsChangedRef = useRef(onViewableItemsChanged);
   const viewabilityConfigRef = useRef(viewabilityConfig);
   const [isHide, setHide] = useState(false);
@@ -45,7 +45,7 @@ export default function AlphaFlatList(props) {
   function onScroll(activeLetter) {
     if (activeLetter) {
       let index = -1;
-      index = props.data.findIndex((item, i) => {
+      index = props.sections[1].data.findIndex((item, i) => {
         let firstVal = item[props.scrollKey].toUpperCase().charAt(0);
         firstVal = "#";
         let firstChar = item[props.scrollKey].toUpperCase().charCodeAt(0);
@@ -118,9 +118,6 @@ export default function AlphaFlatList(props) {
           }
         }
         if (firstVal === activeLetter) {
-          if (i === 0) {
-            return -1;
-          }
           return i;
         }
       });
@@ -130,10 +127,11 @@ export default function AlphaFlatList(props) {
       if (index !== -1) {
         const options = {
           animated: false,
-          offset: index * props.itemHeight,
+          sectionIndex: 1,
+          itemIndex: index + 1,
         };
 
-        flatListRef.current.scrollToOffset(options);
+        sectionListRef.current.scrollToOffset(options);
       }
     }
   }
@@ -143,7 +141,7 @@ export default function AlphaFlatList(props) {
   if (props.displayOnlyAvailableLetters) {
     letters = [
       ...new Set(
-        props.data.map((item) => {
+        props.sections[1].data.map((item) => {
           let firstVal = item[props.scrollKey].toUpperCase().charAt(0);
           firstVal = "#";
           let firstChar = item[props.scrollKey].toUpperCase().charCodeAt(0);
@@ -223,7 +221,15 @@ export default function AlphaFlatList(props) {
   }
 
   function onViewableItemsChanged({ viewableItems }) {
-    if (viewableItems && viewableItems.length) {
+    if (viewableItems[0].section.title !== "전체") {
+      setActiveLetter("");
+      return;
+    }
+    if (
+      viewableItems &&
+      viewableItems.length &&
+      viewableItems[0].item[props.scrollKey]
+    ) {
       let firstVal = viewableItems[0].item[props.scrollKey]
         .toUpperCase()
         .charAt(0);
@@ -308,11 +314,24 @@ export default function AlphaFlatList(props) {
 
   return (
     <View style={[props.containerStyle]}>
-      <FlatList
+      <SectionList
         {...props}
-        ref={flatListRef}
+        ref={sectionListRef}
         style={[props.listStyle]}
         onScrollBeginDrag={debounce(ySideBar)}
+        renderSectionHeader={({ section: { title } }) => (
+          <View
+            style={{
+              height: 36,
+              width: "100%",
+              backgroundColor: "#F7F7F7",
+              justifyContent: "center",
+              alignSelf: "flex-start",
+            }}
+          >
+            <Text style={{ paddingLeft: 20 }}>{title}</Text>
+          </View>
+        )}
         onMomentumScrollEnd={debounce(debounceNSide)}
         onViewableItemsChanged={onViewableItemsChangedRef.current}
         viewabilityConfig={viewabilityConfigRef.current}

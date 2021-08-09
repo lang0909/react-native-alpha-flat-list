@@ -319,19 +319,6 @@ export default function AlphaFlatList(props) {
         ref={sectionListRef}
         style={[props.listStyle]}
         onScrollBeginDrag={debounce(ySideBar)}
-        renderSectionHeader={({ section: { title } }) => (
-          <View
-            style={{
-              height: 36,
-              width: "100%",
-              backgroundColor: "#F7F7F7",
-              justifyContent: "center",
-              alignSelf: "flex-start",
-            }}
-          >
-            <Text style={{ paddingLeft: 20 }}>{title}</Text>
-          </View>
-        )}
         onMomentumScrollEnd={debounce(debounceNSide)}
         onViewableItemsChanged={onViewableItemsChangedRef.current}
         viewabilityConfig={viewabilityConfigRef.current}
@@ -359,9 +346,9 @@ export default function AlphaFlatList(props) {
 
 AlphaFlatList.propTypes = {
   data: PropTypes.array,
+  sections: PropTypes.object,
   scrollKey: PropTypes.string,
   itemHeight: PropTypes.number,
-  hideSidebar: PropTypes.bool,
   displayOnlyAvailableLetters: PropTypes.bool,
   listStyle: PropTypes.object,
   containerStyle: PropTypes.object,
@@ -370,10 +357,11 @@ AlphaFlatList.propTypes = {
   sidebarLetterContainerActiveStyle: PropTypes.object,
   sidebarLetterStyle: PropTypes.object,
   sidebarLetterActiveStyle: PropTypes.object,
+  stickySectionHeadersEnabled: PropTypes.bool,
+  renderSectionHeader: PropTypes.func,
 };
 
 AlphaFlatList.defaultProps = {
   scrollKey: "name",
   itemHeight: 20,
-  hideSidebar: false,
 };

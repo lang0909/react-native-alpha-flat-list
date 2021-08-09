@@ -128,7 +128,7 @@ export default function AlphaFlatList(props) {
         const options = {
           animated: false,
           sectionIndex: 1,
-          itemIndex: index + 1,
+          itemIndex: index === 0 ? index : index + 1,
         };
 
         sectionListRef.current.scrollToLocation(options);

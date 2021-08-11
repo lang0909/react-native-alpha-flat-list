@@ -221,6 +221,7 @@ export default function AlphaFlatList(props) {
   }
 
   function onViewableItemsChanged({ viewableItems }) {
+    if (viewableItems.length === 0) return;
     if (viewableItems[0].section.title !== "all") {
       setActiveLetter("");
       return;

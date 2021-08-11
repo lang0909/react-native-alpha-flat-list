@@ -81,14 +81,7 @@ function Sidebar(props) {
       ref={alphabetContainerRef}
       {...panResponder.panHandlers}
       onLayout={onLayout}
-      style={[
-        styles.container,
-        props.sidebarContainerStyle,
-        {
-          top: `${41 - props.letters.length}%`,
-          bottom: `${41 - props.letters.length}%`,
-        },
-      ]}
+      style={[styles.container, props.sidebarContainerStyle]}
     >
       {props.letters.map((letter) => (
         <View
@@ -101,7 +94,7 @@ function Sidebar(props) {
         >
           <Text
             style={[
-              { fontSize: ResponsiveFontSize(1.6), color: "black" },
+              { fontSize: ResponsiveFontSize(1.5), color: "black" },
               props.sidebarLetterStyle,
               props.activeLetter === letter && props.sidebarLetterActiveStyle,
             ]}

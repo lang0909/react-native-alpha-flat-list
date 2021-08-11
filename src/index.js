@@ -325,7 +325,7 @@ export default function AlphaFlatList(props) {
         viewabilityConfig={viewabilityConfigRef.current}
       />
 
-      {isHide && (
+      {isHide && letters.length !== 0 && (
         <Sidebar
           activeLetter={activeLetter}
           letters={letters}

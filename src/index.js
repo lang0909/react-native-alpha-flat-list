@@ -322,6 +322,7 @@ export default function AlphaFlatList(props) {
         onMomentumScrollEnd={debounce(debounceNSide)}
         onViewableItemsChanged={onViewableItemsChangedRef.current}
         viewabilityConfig={viewabilityConfigRef.current}
+        bounces={false}
       />
 
       {isHide && (

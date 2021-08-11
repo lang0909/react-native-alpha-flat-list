@@ -81,7 +81,14 @@ function Sidebar(props) {
       ref={alphabetContainerRef}
       {...panResponder.panHandlers}
       onLayout={onLayout}
-      style={[styles.container, props.sidebarContainerStyle]}
+      style={[
+        styles.container,
+        props.sidebarContainerStyle,
+        {
+          top: `${41 - props.letters.length}%`,
+          bottom: `${41 - props.letters.length}%`,
+        },
+      ]}
     >
       {props.letters.map((letter) => (
         <View

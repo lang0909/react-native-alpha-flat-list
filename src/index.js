@@ -127,7 +127,7 @@ export default function AlphaFlatList(props) {
       if (index !== -1) {
         const options = {
           animated: false,
-          sectionIndex: 1,
+          sectionIndex: props.sectionIndex,
           itemIndex: index === 0 ? index : index + 1,
         };
 
@@ -221,7 +221,7 @@ export default function AlphaFlatList(props) {
   }
 
   function onViewableItemsChanged({ viewableItems }) {
-    if (viewableItems[0].section.title !== "전체") {
+    if (viewableItems[0].section.title !== "all") {
       setActiveLetter("");
       return;
     }

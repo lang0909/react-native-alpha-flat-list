@@ -45,7 +45,7 @@ export default function AlphaFlatList(props) {
   function onScroll(activeLetter) {
     if (activeLetter) {
       let index = -1;
-      index = props.sections[1].data.findIndex((item, i) => {
+      index = props.sections[props.sectionIndex].data.findIndex((item, i) => {
         let firstVal = item[props.scrollKey].toUpperCase().charAt(0);
         firstVal = "#";
         let firstChar = item[props.scrollKey].toUpperCase().charCodeAt(0);
@@ -141,7 +141,7 @@ export default function AlphaFlatList(props) {
   if (props.displayOnlyAvailableLetters) {
     letters = [
       ...new Set(
-        props.sections[1].data.map((item) => {
+        props.sections[props.sectionIndex].data.map((item) => {
           let firstVal = item[props.scrollKey].toUpperCase().charAt(0);
           firstVal = "#";
           let firstChar = item[props.scrollKey].toUpperCase().charCodeAt(0);
@@ -345,6 +345,7 @@ export default function AlphaFlatList(props) {
 }
 
 AlphaFlatList.propTypes = {
+  sectionIndex: PropTypes.number,
   sections: PropTypes.array,
   scrollKey: PropTypes.string,
   itemHeight: PropTypes.number,
@@ -362,5 +363,6 @@ AlphaFlatList.propTypes = {
 
 AlphaFlatList.defaultProps = {
   scrollKey: "name",
+  sectionIndex: 1,
   itemHeight: 20,
 };

@@ -7,7 +7,7 @@ import debounce from "lodash.debounce";
 import Sidebar from "./components/Sidebar";
 
 const viewabilityConfig = {
-  viewAreaCoveragePercentThreshold: 50,
+  itemVisiblePercentThreshold: 30,
 };
 
 let touchVal = false;
@@ -123,16 +123,13 @@ export default function AlphaFlatList(props) {
       });
 
       setActiveLetter(activeLetter);
+      const options = {
+        animated: false,
+        sectionIndex: props.sectionIndex,
+        itemIndex: index === -1 ? 1 : index + 1,
+      };
 
-      if (index !== -1) {
-        const options = {
-          animated: false,
-          sectionIndex: props.sectionIndex,
-          itemIndex: index === 0 ? index : index + 1,
-        };
-
-        sectionListRef.current.scrollToLocation(options);
-      }
+      sectionListRef.current.scrollToLocation(options);
     }
   }
 

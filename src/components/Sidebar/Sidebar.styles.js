@@ -2,7 +2,7 @@ export default styles = {
   container: {
     right: 0,
     position: "absolute",
-    width: 16,
+    width: 25,
     alignItems: "center",
   },
 };

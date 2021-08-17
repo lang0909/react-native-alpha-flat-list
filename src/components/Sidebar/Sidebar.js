@@ -94,7 +94,7 @@ function Sidebar(props) {
         >
           <Text
             style={[
-              { fontSize: ResponsiveFontSize(1.5), color: "black" },
+              { fontSize: ResponsiveFontSize(1.6), color: "black" },
               props.sidebarLetterStyle,
               props.activeLetter === letter && props.sidebarLetterActiveStyle,
             ]}

@@ -11,6 +11,7 @@ const viewabilityConfig = {
 };
 
 let touchVal = false;
+let timer = null;
 export default function AlphaFlatList(props) {
   const [activeLetter, setActiveLetter] = useState(undefined);
 
@@ -18,7 +19,6 @@ export default function AlphaFlatList(props) {
   const onViewableItemsChangedRef = useRef(onViewableItemsChanged);
   const viewabilityConfigRef = useRef(viewabilityConfig);
   const [isHide, setHide] = useState(false);
-  let timer;
 
   function ySideBar() {
     touchVal = true;

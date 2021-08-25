@@ -118,6 +118,10 @@ export default function AlphaFlatList(props) {
           }
         }
         if (firstVal === activeLetter) {
+          const arrIndex = letters.indexOf(firstVal);
+          if (arrIndex === 0 && i <= 1) {
+            return 0;
+          }
           return i;
         }
       });

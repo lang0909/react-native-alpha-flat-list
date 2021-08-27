@@ -12,6 +12,22 @@ const viewabilityConfig = {
 
 let touchVal = false;
 let timer = null;
+
+function sideHide(sectionDataLen, sectionIndex) {
+  if (sectionIndex === 1) {
+    if (sectionDataLen > 12) {
+      return true;
+    }
+    return false;
+  }
+  if (sectionIndex === 2) {
+    if (sectionDataLen > 10) {
+      return true;
+    }
+    return false;
+  }
+  return true;
+}
 export default function AlphaFlatList(props) {
   const [activeLetter, setActiveLetter] = useState(undefined);
 
@@ -326,22 +342,27 @@ export default function AlphaFlatList(props) {
         viewabilityConfig={viewabilityConfigRef.current}
       />
 
-      {isHide && letters.length !== 0 && (
-        <Sidebar
-          activeLetter={activeLetter}
-          letters={letters}
-          onScroll={debounce(onScroll)}
-          beginFunc={debounce(ySideBar)}
-          endFunc={debounce(debounceNSide)}
-          sidebarContainerStyle={props.sidebarContainerStyle}
-          sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
-          sidebarLetterContainerActiveStyle={
-            props.sidebarLetterContainerActiveStyle
-          }
-          sidebarLetterStyle={props.sidebarLetterStyle}
-          sidebarLetterActiveStyle={props.sidebarLetterActiveStyle}
-        />
-      )}
+      {isHide &&
+        letters.length > 1 &&
+        sideHide(
+          props.sections[props.sectionIndex].data.length,
+          props.sectionIndex
+        ) && (
+          <Sidebar
+            activeLetter={activeLetter}
+            letters={letters}
+            onScroll={debounce(onScroll)}
+            beginFunc={debounce(ySideBar)}
+            endFunc={debounce(debounceNSide)}
+            sidebarContainerStyle={props.sidebarContainerStyle}
+            sidebarLetterContainerStyle={props.sidebarLetterContainerStyle}
+            sidebarLetterContainerActiveStyle={
+              props.sidebarLetterContainerActiveStyle
+            }
+            sidebarLetterStyle={props.sidebarLetterStyle}
+            sidebarLetterActiveStyle={props.sidebarLetterActiveStyle}
+          />
+        )}
     </View>
   );
 }

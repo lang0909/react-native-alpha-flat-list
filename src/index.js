@@ -151,7 +151,9 @@ export default function AlphaFlatList(props) {
         }
       });
 
-      setActiveLetter(activeLetter);
+      if (!mounted.current) {
+        setActiveLetter(activeLetter);
+      }
       const options = {
         animated: false,
         sectionIndex: props.sectionIndex,

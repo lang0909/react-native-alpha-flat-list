@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SectionList, View, Text } from "react-native";
 
 import PropTypes from "prop-types";
@@ -30,11 +30,18 @@ function sideHide(sectionDataLen, sectionIndex) {
 }
 export default function AlphaFlatList(props) {
   const [activeLetter, setActiveLetter] = useState(undefined);
-
+  const mounted = useRef(null);
   const sectionListRef = useRef();
   const onViewableItemsChangedRef = useRef(onViewableItemsChanged);
   const viewabilityConfigRef = useRef(viewabilityConfig);
   const [isHide, setHide] = useState(false);
+
+  useEffect(() => {
+    mounted.current = false;
+    return () => {
+      mounted.current = true;
+    };
+  }, []);
 
   function ySideBar() {
     touchVal = true;
@@ -48,7 +55,9 @@ export default function AlphaFlatList(props) {
     if (touchVal) {
       return;
     }
-    setHide(false);
+    if (!mounted.current) {
+      setHide(false);
+    }
   }
 
   const debounceNSide = function () {
